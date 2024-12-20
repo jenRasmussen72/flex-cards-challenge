@@ -1,0 +1,46 @@
+
+//---------------------------------------------------------------------
+// Tier
+//---------------------------------------------------------------------
+
+.tier {
+    @include tier();
+
+    &__inner {
+        @include wrapper();
+
+        &--constrain {
+            @include bpLarge() {
+                max-width: remify(800);
+            }
+        }
+    }
+
+    &--banner {
+        padding: remify(30 0);
+    }
+
+    &--thin {
+        padding: remify(15 0);
+    }
+
+    &--gray {
+        background-color: palette(neutral, athens-gray);
+    }
+
+    &--blue {
+        background-color: palette(brand, blue-mid);
+    }
+
+    &--maroon {
+        background-color: palette(brand, maroon);
+    }
+}
+
+// Moving the stretch styling here as it should override the previously defined paddings
+.Tier {
+    &--stretch {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}

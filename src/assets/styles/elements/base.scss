@@ -1,0 +1,76 @@
+//----------------------------------------------------------------------------
+// Elements: Base
+//----------------------------------------------------------------------------
+
+html {
+    font-size: 100%;
+}
+
+body {
+    font-family: font(family, base);
+    font-weight: font(weight, regular);
+    font-style: font(style, normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body:after {
+    display: block;
+    height: 0;
+    width: 0;
+    font-size: 0;
+    line-height: 0;
+    opacity: 0;
+    content: $viewport-width-sm-string;
+
+    @include bpMedium() {
+        content: $viewport-width-md-string;
+    }
+
+    @include bpLarge() {
+        content: $viewport-width-lg-string;
+    }
+
+    @include bpXLarge() {
+        content: $viewport-width-xl-string;
+    }
+}
+
+// Fix font-family not being inherited on form elements
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    @include btnReset();
+    padding: 0;
+    text-align: left;
+}
+
+code {
+    font-family: font(family, code);
+}
+
+svg {
+    &:active {
+        pointer-events: none;
+    }
+
+    display: inline-block; // Safari doesn't respect inline
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+hr {
+    background: #d0cfcf;
+    height: 1px;
+    border: 0;
+    margin: 0 auto;
+}

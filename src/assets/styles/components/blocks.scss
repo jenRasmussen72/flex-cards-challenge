@@ -1,0 +1,70 @@
+//---------------------------------------------------------------------
+// Blocks
+//---------------------------------------------------------------------
+
+.blocks {
+    display: block;
+
+    @include bpLarge() {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}
+
+.blocks__item {
+    display: flex;
+    flex-grow: 0;
+    box-sizing: border-box;
+    padding: remify(30 30 30 0);
+}
+
+.blocks--2up .blocks__item {
+    @include bpLarge() {
+        width: 50%;
+    }
+}
+
+.blocks--3up .blocks__item {
+    @include bpLarge() {
+        width: 33.33%;
+    }
+}
+
+.blocks--4up .blocks__item {
+    @include bpSmall() {
+        width: 50%;
+    }
+
+    @include bpXLarge() {
+        width: 25%;
+    }
+}
+
+//---------------------------------------------------------------------
+// MHFNUpContentBlock
+//---------------------------------------------------------------------
+
+.NUpContentBlock {
+    &__cta {
+        @include typographyLabelHeading();
+
+        color: palette(brand, blue-mid);
+        padding: remify(24);
+
+        @include bpMaxLarge() {
+            padding: remify(24 16);
+        }
+    }
+}
+
+.MHFNup {
+    &--Image.tier {
+        padding-bottom: 0;
+    }
+
+    &Heading {
+        margin-bottom: remify(24);
+    }
+}

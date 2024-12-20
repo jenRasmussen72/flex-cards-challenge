@@ -1,0 +1,222 @@
+//---------------------------------------------------------------------
+// Card
+//---------------------------------------------------------------------
+
+.card {
+    position: relative;
+    background-color: palette(neutral, white);
+    border: $base-border;
+    transition: all 0.15s ease-in-out;
+}
+
+.card--border-dark {
+    border-color: #d8d8d8;
+}
+
+.card--centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card__image {
+    width: 100%;
+    height: remify(170);
+    overflow: hidden;
+
+    @include bpMedium() {
+        height: remify(190);
+    }
+}
+
+.card--blue {
+    background-color: palette(brand, blue-mid);
+    color: palette(neutral, white);
+}
+
+.card--inverse {
+    color: palette(neutral, white);
+}
+
+.card__image > img {
+    @include objectFit(cover, center center);
+    width: 100%;
+    height: 100%;
+}
+
+.card__section {
+    padding: remify(24);
+
+    @include bpMaxLarge() {
+        padding: remify(24 16);
+    }
+
+    &--indexOnCard {
+        display: flex;
+        padding: remify(16);
+    }
+}
+
+.card__topper {
+    height: 10px;
+    background-color: palette(brand, blue-mid);
+}
+
+.card__close {
+    position: absolute;
+    top: remify(28);
+    right: remify(20);
+    z-index: 2;
+}
+
+.card__close-btn {
+    display: inline-block;
+    width: remify(36);
+    height: remify(36);
+    padding: remify(10);
+
+    & > svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        fill: palette(brand, blue-dark);
+    }
+}
+
+.card__tag {
+    width: fit-content;
+    position: absolute;
+    top: remify(0);
+    right: 0;
+    padding: remify(0 27);
+    background-color: palette(brand, gold);
+    border-bottom-left-radius: remify(8);
+
+    @include bpMedium() {
+        padding: remify(6 27);
+    }
+
+    @include bpLarge() {
+        right: remify(24);
+        border-bottom-right-radius: remify(8);
+    }
+}
+
+.card__tag--maroon {
+    color: palette(neutral, white);
+    background-color: palette(brand, maroon);
+}
+
+@include bpLarge() {
+    .card--pad-lg\@large {
+        & .card__section {
+            padding: remify(50 40);
+        }
+
+        & .card__tag {
+            right: remify(40);
+        }
+
+        & .card__footer {
+            padding: remify(24 0 32 0);
+            margin-left: remify(40);
+            margin-right: remify(40);
+        }
+    }
+}
+
+.card__section__title {
+    @include scaleFontSize(22, 24);
+}
+
+.card__footer {
+    border-top: 1px solid palette(neutral, mystic);
+    padding: remify(20 0);
+    margin: remify(0 24);
+
+    &__btn {
+        background-position: left center;
+        background-repeat: no-repeat;
+        padding-left: remify(24);
+    }
+}
+
+.card--stretch {
+    display: flex;
+    flex-direction: column;
+
+    > .card__section {
+        display: flex;
+        flex-grow: 1;
+        min-height: 1px;
+    }
+
+    @include ie11(' > .card__section') {
+        display: block;
+    }
+}
+
+@include ie11('.card--stretch') {
+    display: block;
+}
+
+.card--shadow {
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.08);
+    border: none;
+}
+
+.card--no-border {
+    border: none;
+}
+
+.card--scale-active {
+    position: relative;
+    box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.2);
+    transform: scale(1.025);
+
+    &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background-color: palette(brand, blue-dark);
+        content: '';
+    }
+}
+
+a.card {
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.2);
+        transform: scale(1.025);
+    }
+}
+
+.card--scale {
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.2);
+        transform: scale(1.025);
+    }
+}
+
+a.card--color-grey,
+.card--color-grey {
+    background-color: palette(neutral, mystic);
+
+    &:hover,
+    &:focus {
+        box-shadow: none;
+        transform: scale(1.025);
+    }
+}
+
+.card.focus-visible,
+a.card.focus-visible {
+    border: 1px solid palette(brand, blue-dark);
+}

@@ -1,0 +1,85 @@
+@import "fairview.scss";
+
+
+/*Jen: add/overwrite for challenge*/
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/*custom header*/
+#root {
+    margin: remify(30) auto;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  a, h1, h2 {
+      text-align: center;
+  }
+}
+
+.logo-link {
+  margin-bottom: remify(20);
+}
+
+.logo {
+  width: 140px;
+  height: auto;
+  will-change: filter, transform;
+  transition: transform 250ms ease-in-out, filter 250ms ease-out;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em gold);
+}
+
+.logo.animate:hover {
+  filter: drop-shadow(0 0 2em gold-dark);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo:hover {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+/*custom header*/
+
+/*fairview*/
+.tier {
+  background-color: #f1f3f5;
+}
+
+.tier-inner {
+  max-width: 90rem;
+  margin: 0 auto;
+  @media screen and (min-width: 1025px) {
+      padding: auto 4.375rem;
+  }
+}
+
+.blocks__item {
+  padding: 1.875rem;
+}
+
+/*this is the fix*/
+.card {
+  display: flex;
+
+  .callout {
+      height: 100%;
+  }
+}
+/*this is the fix*/
+/*fairview*/
+/*Jen: overwrites for challenge*/

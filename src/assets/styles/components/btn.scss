@@ -1,0 +1,144 @@
+//---------------------------------------------------------------------
+// Button
+//---------------------------------------------------------------------
+
+.btn {
+    @include btnReset();
+    display: inline-block;
+    min-height: remify(54);
+    max-width: 100%;
+    padding: remify(18 36);
+    border-radius: remify(30);
+    box-sizing: border-box;
+    color: palette(brand, blue-dark);
+    font-size: remify(16);
+    font-weight: font(weight, medium);
+    text-align: center;
+    transition: background-color 0.15s linear;
+
+    // Bump up the icon suffix size if its inside btn
+    .icon--suffix > svg {
+        width: 1em;
+        height: 1em;
+    }
+
+    &.focus-visible {
+        @include heavyFocus();
+    }
+}
+
+.btn--primary {
+    background-color: palette(brand, gold);
+
+    &:hover {
+        background-color: palette(brand, gold-dark);
+    }
+}
+
+// TODO: Design direction on hover/active state
+.btn--secondary {
+    background-color: palette(neutral, mystic);
+
+    &:hover {
+        background-color: palette(neutral, mischka);
+    }
+}
+
+.btn--tertiary {
+    background-color: palette(neutral, white);
+    border: 1px solid palette(brand, blue-mid);
+
+    &:hover {
+        background-color: palette(neutral, athens-gray);
+    }
+}
+
+.btn--blue-mid {
+    background-color: palette(brand, blue-mid);
+    color: palette(neutral, white);
+
+    &:hover {
+        background-color: palette(brand, blue-dark);
+    }
+}
+
+.btn--emergency {
+    background: palette(neutral, white);
+    color: #de111f;
+
+    &.focus-visible {
+        box-shadow: 0 0 0 1px palette(neutral, white), 0 0 0 2px #de111f;
+    }
+}
+
+.btn--label-icon,
+.btn--icon {
+    & .btn__icon {
+        display: block;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+// Icon with a label
+.btn--label-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    & .btn__icon {
+        // Pad icon from the label text
+        &:first-child {
+            margin-right: 10px;
+        }
+
+        &:first-child {
+            margin-right: 10px;
+        }
+    }
+}
+
+// Only icon
+.btn--icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: remify(54);
+    padding: 0;
+}
+
+.btn--full {
+    width: 100%;
+}
+
+.btn--wide {
+    padding-left: remify(50);
+    padding-right: remify(50);
+}
+
+.btn--full\@small {
+    @include bpMaxSmall() {
+        width: 100%;
+    }
+}
+
+.btn--mobile-menu {
+    height: remify(44);
+    width: remify(44);
+    font-size: 0;
+
+    > svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+// to get focus by javasript focus function default focus visible is unable to get there
+.btn--focus {
+    &:focus {
+        box-shadow: 0 0 0 1px palette(neutral, white),
+            0 0 0 2px palette(brand, blue-dark) !important;
+        outline: none !important;
+    }
+}

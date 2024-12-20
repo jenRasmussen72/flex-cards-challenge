@@ -1,0 +1,907 @@
+//----------------------------------------------------------------------------
+// Settings: Colors
+//----------------------------------------------------------------------------
+
+// USAGE
+//
+// a {
+//     color: palette(brand, primary);
+// }
+//
+// TODO: Deprecate contextual color names in favor of abstracted ones
+// This will allow us to share code across multiple apps more easily
+// i.e. replace instances of blue-dark with primary, etc.
+$PALETTES: (
+    brand: (
+        blue-dark: #0c1e44,
+        blue-mid: #2e426b,
+        blue-light: #294e98,
+        resolution-blue: #2d436b,
+        maroon: #6a0910,
+        gold: #ffb700,
+        gold-dark: #f3ab11,
+        primary: #0c1e44,
+        la-palma: #3d821e,
+        flamingo: #f26534,
+        school-bus-yellow: #ffdd00,
+        st-tropaz: #294e98,
+    ),
+    // named by: http://chir.ag/projects/name-that-color
+        neutral:
+        (
+            mine-shaft: #333333,
+            fedora: #777677,
+            dusty-gray: #949494,
+            nobel: #b4b3b3,
+            mischka: #d6dae1,
+            mystic: #e5e9ef,
+            athens-gray: #f1f3f5,
+            light-black-gray: #5a5a5a,
+            light-athens-gray: #f8f9fa,
+            white: #ffffff,
+            casper: #b2c2d2,
+            quill-gray: #d5d6d2,
+            cornflow-blue: #eff2f5,
+            alto: #d8d8d8,
+            apple: #70b145,
+            crimson-red: #de111f,
+            deco: #cada8a,
+            nepal: #87a1bc,
+            eerie-black: #201b1b,
+            tint-gray-thumbnail-gradient:
+                linear-gradient(
+                    (
+                        8deg,
+                        rgba(21, 21, 21, 0.9) -0.74%,
+                        rgba(0, 0, 0, 0) 64.53%
+                    )
+                ),
+        ),
+    status: (
+        error: #9d001b,
+    ),
+);
+
+@function palette($palette, $tone) {
+    @return map-get(map-get($PALETTES, $palette), $tone);
+}
+
+/****** GLOBAL TOKENS ******/
+$primary-01-600: #5b0013;
+$primary-01-500: #6a0910;
+$primary-01-400: #900021;
+$primary-02-700: #f3ab11;
+$primary-02-600: #ffb71e;
+$primary-02-500: #ffb700;
+$primary-02-400: #ffde7a;
+$secondary-01-600: #0c1e44;
+$secondary-01-500: #2e426b;
+$secondary-01-400: #294e98;
+$secondary-02-500: #2d436b;
+$secondary-02-400: #777795;
+$secondary-02-300: #c8c7d4;
+$tertiary-01-600: #075063;
+$tertiary-01-500: #0b7691;
+$tertiary-01-400: #1ab2d9;
+$neutral-black: #000000;
+$neutral-white: #ffffff;
+$neutral-900: #201b1b;
+$neutral-100: #f1f3f5;
+$athens-gray: #f1f3f5;
+$neutral-200: #eff2f5;
+$neutral-300: #e5e9ef;
+$neutral-400: #d5d6d2;
+$neutral-450: #d6dae1;
+$neutral-500: #949494;
+$neutral-600: #777677;
+$neutral-700: #5a5a5a;
+$neutral-800: #333333;
+$positive-500: #70b145;
+$warning-500: #f57a2b;
+$alert-500: #f57a2b;
+$error-500: #de111f;
+$information-500: #008ad8;
+$white: white;
+$black: black;
+
+//----------------------------------------------------------------------------
+// Settings: Fonts
+//----------------------------------------------------------------------------
+
+// USAGE
+//
+// body {
+//     font-family: font(family, base);
+//     font-weight: font(weight, bold);
+//     font-style: font(style, italic);
+// }
+//
+$FONTS: (
+    family: (
+        base: #{'Roboto',
+        'Helvetica Neue',
+        'Arial',
+        sans-serif},
+        code: #{source-code-pro,
+        Menlo,
+        Monaco,
+        Consolas,
+        'Courier New',
+        monospace},
+    ),
+    weight: (
+        light: 300,
+        regular: 400,
+        medium: 500,
+        bold: 700,
+    ),
+    style: (
+        normal: normal,
+        italic: italic,
+    ),
+);
+
+@function font($font, $style: 'regular') {
+    @return map-get(map-get($FONTS, $font), $style);
+}
+
+//----------------------------------------------------------------------------
+// Settings: Global
+//----------------------------------------------------------------------------
+
+// Breakpoints
+// Includes pixel values
+$viewport-width-sm: 500px;
+$viewport-width-md: 768px;
+$viewport-width-lg: 1025px;
+$viewport-width-mdlg: 1281px;
+$viewport-width-xl: 1440px;
+
+// Breakpoint Strings
+$viewport-width-sm-string: 'small';
+$viewport-width-md-string: 'medium';
+$viewport-width-lg-string: 'large';
+$viewport-width-mdlg--string: 'midlarge';
+$viewport-width-xl-string: 'xlarge';
+
+// Decoration
+$base-border: 1px solid palette(neutral, mischka);
+$base-focus-outline: 1px solid palette(brand, blue-light);
+$overlay-color-light: rgba(255, 255, 255, 0.7);
+$overlay-color-dark: rgba(0, 0, 0, 0.4);
+
+// Landmarks
+//  -header & navigation
+$header-height-mobile: 58px;
+$header-item-margin: 24px;
+$nav-item-width: 266px;
+$nav-item-margin: 40px;
+$nav-logo-height-desktop: 119px;
+$nav-logo-width-desktop: 126px;
+$nav-logo-height-mobile: 58px;
+$nav-logo-width-mobile: 62px;
+$nav-logo-height-modal: 58px;
+$nav-logo-width-modal: 62px;
+$nav-width-desktop: 307px;
+$jump-nav-width: 300px;
+
+// Spacing and Alignment
+$desktop-gutter: 70px;
+$mobile-gutter: 20px;
+$base-spacing-unit: 4;
+
+// Spacing for the wrapper() mixin
+$wrapper-padding-x: 30;
+$wrapper-padding-x--medium: 50;
+$wrapper-padding-x--large: 70;
+
+// Text
+$base-font-size: 16;
+$base-line-height: 26; // prevents ascenders and descenders from being cut off
+
+// Z-Index
+$z-index-modal: 99999999; // ridiculous z index for modals because of chatbot widget being 9999999
+$z-index-dropdown: 8999;
+$z-index-nav: 1999;
+$z-index-text-over-image: 10;
+$z-index-jump-nav: 3;
+$z-index-overlay: 1;
+
+// TODO: remove 'px' from variable except viewport and add 'remify where neccessary'
+
+// Covid banner
+$covid-banner-height: 65px;
+$covid-banner-height--large: 85px;
+
+// Size
+$size-fluid: auto;
+$size-fixed-desktop-1440: 1440;
+$size-fixed-desktop-1200: 1200;
+$size-fixed-mobile-288: 288;
+
+// Modal Max and Min height
+$modal-min-height: 53.6vh; // ~ 450px
+$modal-max-height: 80vh; // ~670px
+
+//----------------------------------------------------------------------------
+// Tools: Functions
+//----------------------------------------------------------------------------
+
+// Accepts multiple values for shorthand properties
+@function remify($values) {
+    $rems: ();
+
+    @each $value in $values {
+        @if $value == 0 or $value == auto {
+            $rems: append($rems, $value);
+        } @else {
+            $rems: append($rems, ($value / $base-font-size) + rem);
+        }
+    }
+    @return $rems;
+}
+
+//----------------------------------------------------------------------------
+// Tools: Mixins
+//----------------------------------------------------------------------------
+
+// Accessibly hide elements
+@mixin isVisuallyHidden() {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+@mixin isHidden() {
+    display: none !important;
+}
+
+@mixin isInvisible() {
+    visibility: hidden !important;
+}
+
+@mixin btnReset() {
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@mixin imageFillHeight() {
+    height: 100%;
+    width: auto;
+}
+
+@mixin imageFillWidth() {
+    height: auto;
+    width: 100%;
+}
+
+@mixin wrapper() {
+    margin: 0 auto;
+    max-width: remify(
+        1440
+    ); // TODO: this was a semi-arbitrary number, put thought into it
+    padding-left: remify($wrapper-padding-x);
+    padding-right: remify($wrapper-padding-x);
+
+    @include bpMedium() {
+        padding-left: remify($wrapper-padding-x--medium);
+        padding-right: remify($wrapper-padding-x--medium);
+    }
+
+    @include bpLarge() {
+        padding-left: remify($wrapper-padding-x--large);
+        padding-right: remify($wrapper-padding-x--large);
+    }
+}
+
+@mixin wrapperV2() {
+    padding-left: remify(120);
+    padding-right: remify(120);
+
+    @include bpMaxLarge() {
+        padding-left: remify(16);
+        padding-right: remify(16);
+    }
+
+    @include bpXLarge() {
+        max-width: 100%;
+    }
+}
+
+@mixin wrapperV3() {
+    padding-left: remify(120);
+    padding-right: remify(120);
+
+    @include bpMaxLarge() {
+        padding-left: remify(16);
+        padding-right: remify(16);
+    }
+
+    // Following breakpoint is temporary and to handle
+    // screen layout between 1200px and 1024px. In future
+    // this breakpoint will added to global level once due diligence is done
+    @media only screen and (max-width: 1280px) and (min-width: 1024px) {
+        padding-left: remify(32);
+        padding-right: remify(32);
+    }
+
+    @include bpXLarge() {
+        max-width: 100%;
+    }
+}
+
+//----------------------------------------------------------------------
+// conditional IE11 styles
+//
+// Provides a way to have styles applied only to IE11.
+// Expects a single, simple selector such as '.componentName'
+// Can be nested, but cannon nest within
+//
+// .componentName_isActive {
+//     @mixin ie11 .componentName-child {
+//         display: block;
+//     }
+// }
+//----------------------------------------------------------------------
+@mixin ie11($selector) {
+    @media all and (-ms-high-contrast: none) {
+        *::-ms-backdrop,
+        #{$selector} {
+            @content;
+        }
+    }
+}
+
+// Scale Font Size
+// https://css-tricks.com/books/fundamental-css-tactics/scale-typography-screen-size/
+//
+// @param font size (px) values as integers
+@mixin scaleFontSize($min, $max) {
+    font-size: calc(
+        #{$min}px + (#{$max} - #{$min}) * ((100vw - 320px) / (1440 - 320))
+    );
+    line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 320px) / (1440 - 320)));
+}
+
+// Breakpoints
+//
+// For the purposes of consistency and ease of use, please nest breakpoint mixins
+// inside of each CSS selector rather than isolating them at the bottom of each file.
+@mixin bpSmall() {
+    @media only screen and (min-width: $viewport-width-sm) {
+        @content;
+    }
+}
+
+@mixin bpMedium() {
+    @media only screen and (min-width: $viewport-width-md) {
+        @content;
+    }
+}
+
+@mixin bpMidLarge() {
+    @media only screen and (min-width: $viewport-width-mdlg) {
+        @content;
+    }
+}
+
+@mixin bpLarge() {
+    @media only screen and (min-width: $viewport-width-lg) {
+        @content;
+    }
+}
+
+@mixin bpXLarge() {
+    @media only screen and (min-width: $viewport-width-xl) {
+        @content;
+    }
+}
+
+@mixin bpMaxSmall() {
+    @media only screen and (max-width: $viewport-width-sm - 1) {
+        @content;
+    }
+}
+
+@mixin bpMaxMedium() {
+    @media only screen and (max-width: $viewport-width-md - 1) {
+        @content;
+    }
+}
+
+@mixin bpMaxLarge() {
+    @media only screen and (max-width: $viewport-width-lg - 1) {
+        @content;
+    }
+}
+
+@mixin bpMaxMidLarge() {
+    @media only screen and (max-width: $viewport-width-mdlg - 1) {
+        @content;
+    }
+}
+
+@mixin bpMaxXLarge() {
+    @media only screen and (max-width: $viewport-width-xl - 1) {
+        @content;
+    }
+}
+
+@mixin bpMinMaxMidLarge() {
+    @media only screen and (min-width: $viewport-width-mdlg) and (max-width: $viewport-width-xl+1) {
+        @content;
+    }
+}
+
+// NOTE: accommodate very small view ports/extreme zoom
+@mixin bpXSmall--height() {
+    @media only screen and (max-height: 400px) {
+        @content;
+    }
+}
+
+// Focus defaults
+@mixin defaultFocus {
+    box-shadow: 0 0 0 1px palette(neutral, white),
+        0 0 0 2px palette(brand, blue-dark);
+    outline: none;
+}
+
+@mixin heavyFocus {
+    box-shadow: 0 0 0 2px palette(neutral, white),
+        0 0 0 4px palette(brand, blue-dark);
+}
+
+// Focus reset
+@mixin resetFocus {
+    outline: none;
+    box-shadow: none;
+
+    &::-moz-focus-inner,
+    &::-moz-focus-outer {
+        border: 0;
+    }
+}
+
+/*
+  This mixin can be used to set the object-fit:
+  @include objectFit(contain);
+  or object-fit and object-position:
+  @include objectFit(cover, top);
+*/
+@mixin objectFit($fit: fill, $position: null) {
+    -o-object-fit: $fit;
+    object-fit: $fit;
+
+    @if $position {
+        -o-object-position: $position;
+        object-position: $position;
+        font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+    } @else {
+        font-family: 'object-fit: #{$fit}';
+    }
+}
+
+@mixin sneezeGuard($position: fixed) {
+    position: $position;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-index-overlay;
+    background-color: $overlay-color-light;
+    animation: fadeIn 0.3s;
+}
+
+@mixin lineClamp($lines) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+    overflow: hidden;
+}
+
+@mixin tier() {
+    padding: remify(24 0);
+
+    @include bpLarge() {
+        padding: remify(40 0);
+    }
+}
+
+@mixin wizardWidth() {
+    // Need 100% width minus the total wrapper padding for smoother animation...
+    width: calc(100% - #{remify($wrapper-padding-x * 2)});
+
+    @include bpMedium() {
+        width: calc(100% - #{remify($wrapper-padding-x--medium * 2)});
+    }
+
+    @include bpLarge() {
+        width: calc(100% - #{remify($wrapper-padding-x--large * 2)});
+    }
+}
+
+@mixin typographyHeroHeading() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, medium);
+    font-size: remify(44);
+    line-height: remify(46);
+    letter-spacing: 0;
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, medium);
+        font-size: remify(84);
+        line-height: remify(88);
+        letter-spacing: 0;
+    }
+}
+
+@mixin typographyH1() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, medium);
+    font-size: remify(28);
+    line-height: remify(33);
+    letter-spacing: 0;
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, medium);
+        font-size: remify(48);
+        line-height: remify(54);
+        letter-spacing: 0;
+    }
+}
+
+@mixin typographyH2() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, medium);
+    font-size: remify(24);
+    line-height: remify(28);
+    letter-spacing: 0;
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, medium);
+        font-size: remify(36);
+        line-height: remify(42);
+        letter-spacing: 0;
+    }
+}
+
+@mixin typographyH3() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, medium);
+    font-size: remify(20);
+    line-height: remify(26);
+    letter-spacing: 0;
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, medium);
+        font-size: remify(24);
+        line-height: remify(28);
+        letter-spacing: 0;
+    }
+}
+
+@mixin typographyH4() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, bold);
+    font-size: remify(18);
+    line-height: remify(22);
+    letter-spacing: 0;
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, bold);
+        font-size: remify(18);
+        line-height: remify(26);
+        letter-spacing: 0;
+    }
+}
+
+@mixin typographyH4Regular() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, regular);
+    font-size: remify(18);
+    line-height: remify(22);
+    letter-spacing: 0;
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, regular);
+        font-size: remify(18);
+        line-height: remify(26);
+        letter-spacing: 0;
+    }
+}
+
+@mixin typographyH4Light() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, light);
+    font-size: remify(18);
+    line-height: remify(22);
+    letter-spacing: 0;
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, light);
+        font-size: remify(18);
+        line-height: remify(26);
+        letter-spacing: 0;
+    }
+}
+
+@mixin typographyH5() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, medium);
+    font-size: remify(16);
+    line-height: remify(26);
+    letter-spacing: 0;
+}
+
+@mixin typographyH6() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, medium);
+    font-size: remify(16);
+    line-height: remify(26);
+    letter-spacing: remify(0.2);
+}
+
+@mixin typographyLabelHeading() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, medium);
+    font-size: remify(16);
+    line-height: remify(20);
+    letter-spacing: 0;
+}
+
+@mixin typographyDefaultBody() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, light);
+    font-size: remify(14);
+    line-height: remify(22);
+    letter-spacing: remify(0.2);
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, light);
+        font-size: remify(16);
+        line-height: remify(26);
+        letter-spacing: remify(0.2);
+    }
+}
+
+@mixin typographyDefaultBodyV2() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, light);
+    font-size: remify(16);
+    line-height: remify(26);
+    letter-spacing: remify(0.2);
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, light);
+        font-size: remify(18);
+        line-height: remify(26);
+        letter-spacing: remify(0.2);
+    }
+}
+
+@mixin typographyDefaultBodyRegular() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, regular);
+    font-size: remify(14);
+    line-height: remify(22);
+    letter-spacing: remify(0.2);
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, regular);
+        font-size: remify(16);
+        line-height: remify(26);
+        letter-spacing: remify(0.2);
+    }
+}
+
+@mixin typographyDefaultBodyMedium() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, medium);
+    font-size: remify(14);
+    line-height: remify(22);
+    letter-spacing: remify(0.2);
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, medium);
+        font-size: remify(14);
+        line-height: remify(26);
+        letter-spacing: remify(0.2);
+    }
+}
+
+@mixin typographyDefaultBodyBold() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, bold);
+    font-size: remify(14);
+    line-height: remify(22);
+    letter-spacing: remify(0.2);
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, bold);
+        font-size: remify(16);
+        line-height: remify(26);
+        letter-spacing: remify(0.2);
+    }
+}
+
+@mixin typographyDefaultBodyLightItalics() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, light);
+    font-style: font(style, italic);
+    font-size: remify(14);
+    line-height: remify(22);
+    letter-spacing: remify(0.2);
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, light);
+        font-style: font(style, italic);
+        font-size: remify(16);
+        line-height: remify(26);
+        letter-spacing: remify(0.2);
+    }
+}
+
+@mixin typographySmallBody() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, regular);
+    font-size: remify(14);
+    line-height: remify(22);
+    letter-spacing: remify(0.2);
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, regular);
+        font-size: remify(14);
+        line-height: remify(26);
+        letter-spacing: remify(0.2);
+    }
+}
+
+@mixin typographySmallBodyBold() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, bold);
+    font-size: remify(14);
+    line-height: remify(22);
+    letter-spacing: remify(0.2);
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, bold);
+        font-size: remify(14);
+        line-height: remify(26);
+        letter-spacing: remify(0.2);
+    }
+}
+
+@mixin typographyCaption() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, regular);
+    font-size: remify(10);
+    line-height: remify(16);
+    letter-spacing: 0;
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, regular);
+        font-size: remify(12);
+        line-height: remify(16);
+        letter-spacing: 0;
+    }
+}
+
+@mixin typographyCaptionBold() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, bold);
+    font-size: remify(10);
+    line-height: remify(16);
+    letter-spacing: 0;
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, bold);
+        font-size: remify(12);
+        line-height: remify(16);
+        letter-spacing: 0;
+    }
+}
+
+@mixin typographyWebHyperLink() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, regular);
+    font-size: remify(14);
+    line-height: remify(22);
+    letter-spacing: remify(0.2);
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, regular);
+        font-size: remify(16);
+        line-height: remify(26);
+        letter-spacing: 0;
+    }
+}
+
+@mixin typographyCaptionMedium() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, medium);
+    font-size: remify(10);
+    line-height: remify(16);
+    letter-spacing: 0;
+}
+
+@mixin typographyUtilityNav() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, medium);
+    font-size: remify(12);
+    line-height: remify(16);
+    letter-spacing: 0;
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, medium);
+        font-size: remify(14);
+        line-height: remify(20);
+        letter-spacing: 0;
+    }
+}
+
+@mixin typographySmallRegular() {
+    font-family: font(family, Roboto);
+    font-weight: font(weight, regular);
+    font-size: remify(12);
+    line-height: remify(16);
+    letter-spacing: 0;
+
+    @include bpLarge() {
+        font-family: font(family, Roboto);
+        font-weight: font(weight, regular);
+        font-size: remify(14);
+        line-height: remify(20);
+        letter-spacing: 0;
+    }
+}
+
+//----------------------------------------------------------------------------
+// Styles
+//
+// Each section should be list imports in alphabetical order.
+//----------------------------------------------------------------------------
+
+// // GENERIC
+@import '/src/assets/styles/generic/reset';
+
+// // ELEMENTS
+@import '/src/assets/styles/elements/base';
+
+// // OBJECTS
+@import '/src/assets/styles/objects/tier';
+
+
+// // COMPONENTS
+// @import './assets/styles/components/txt';
+@import '/src/assets/styles/components/blocks';
+@import '/src/assets/styles/components/btn';
+@import '/src/assets/styles/components/callout';
+@import '/src/assets/styles/components/card';
+@import '/src/assets/styles/components/hdg';

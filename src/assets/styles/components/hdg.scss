@@ -1,0 +1,45 @@
+//---------------------------------------------------------------------
+// Heading
+//---------------------------------------------------------------------
+
+.hdg {
+    color: palette(brand, blue-dark);
+    font-family: font(family, base);
+    font-weight: font(weight, medium);
+    white-space: pre-line; // Wrap on newline characters to support multi-line text fields
+}
+
+// Based on the Style Guide
+// https://www.sketch.com/s/be2d23a6-ec21-4e2b-86fe-f101ad043921/a/Wm0rqq
+.hdg--1 {
+    @include typographyH1();
+}
+
+.hdg--2 {
+    @include typographyH2();
+}
+
+.hdg--3 {
+    @include typographyH3();
+}
+
+.hdg--4 {
+    @include typographyH4();
+}
+
+.hdg--inverse {
+    color: palette(neutral, white);
+}
+
+.hdg--underline {
+    text-decoration: underline;
+}
+
+// TODO: Revisit headings, this should probably be included with h1-h6
+.hdg--tier {
+    @include scaleFontSize(28, 48);
+}
+
+.hdg--blue-mid {
+    color: palette(brand, blue-mid);
+}

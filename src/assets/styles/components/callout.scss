@@ -1,0 +1,73 @@
+//---------------------------------------------------------------------
+// Callout
+//---------------------------------------------------------------------
+
+.callout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: remify(16);
+    color: palette(brand, primary);
+
+    &__cta {
+        @include typographyLabelHeading();
+
+        color: palette(brand, blue-mid);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        &Body {
+            margin-bottom: remify(24);
+            color: palette(neutral, mine-shaft);
+
+            .rich-text {
+                @include typographyDefaultBody();
+            }
+        }
+
+        &Title {
+            display: inline-block;
+            margin-bottom: remify(8);
+
+            .hdg {
+                margin-right: remify(16);
+                color: palette(brand, blue-dark);
+                display: inline;
+
+                @include typographyH3();
+            }
+
+            &Flag {
+                background-color: palette(brand, maroon);
+                color: palette(neutral, white);
+                text-align: center;
+                vertical-align: middle;
+                padding: remify(4 10);
+                margin-bottom: remify(4);
+                display: inline-block;
+
+                @include typographyCaptionBold();
+            }
+        }
+    }
+
+    &__picture {
+        width: remify(70);
+        height: remify(55);
+
+        @include bpLarge() {
+            width: remify(160.435);
+            height: remify(120);
+        }
+    }
+
+    &__ImageWrapper {
+        margin-bottom: 0;
+    }
+}
